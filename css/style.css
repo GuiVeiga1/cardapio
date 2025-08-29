@@ -1,0 +1,358 @@
+@charset "UTF-8";
+
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: rgb(241, 236, 236);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+/* TÍTULOS */
+h1,
+h2,
+h3 {
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* LAYOUT PRINCIPAL */
+main {
+  min-height: 100vh; /* ocupa no mínimo a tela inteira */
+  width: 100%;
+  display: grid;
+  grid-template: 260px 1fr 40px / 1fr 1fr;
+}
+
+/* HEADER */
+header {
+  grid-area: 1 / 1 / 2 / -1;
+  background: url("../img/fundo.png") center/cover no-repeat;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+header p {
+  background-color: rgba(38, 122, 63, 0.842);
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+picture {
+  margin-top: 10px;
+  height: 100px;
+  width: 100px;
+  background: url("../img/loha.avif") center/cover no-repeat;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background-color: #FFD27F; /* fallback */
+  transition: transform 0.3s ease;
+}
+
+picture:hover {
+  transform: rotate(5deg) scale(1.05);
+}
+
+header > h1 {
+  margin: 10px 0 5px 0;
+  font-size: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* ASIDE */
+aside {
+  display: flex;
+}
+
+/* SECTION */
+section {
+  grid-area: 2 / 1 / 3 / -1;
+}
+
+section > h2 {
+  text-align: center;
+  margin: 10px;
+  padding: 5px;
+}
+
+/* NAV */
+section > nav > ul {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px;
+}
+
+section > nav > ul > li {
+  display: flex;
+}
+
+section > nav > ul > li > a {
+  text-decoration: none;
+  color: black;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600;
+}
+
+nav ul li a.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: red;
+  text-decoration-thickness: 3px;
+}
+
+/* CONTAINER DE ITENS */
+.container {
+  display: none; /* escondido por padrão */
+  grid-template-columns: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+}
+
+.container.active {
+  display: grid;
+}
+/* Título dentro do container */
+.container h2.titulo-secao {
+  grid-column: 1 / -1; /* ocupa todas as colunas do grid */
+  text-align: center;
+
+}
+
+
+
+
+/* RESPONSIVIDADE */
+@media (min-width: 600px) {
+  .container.active {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .container.active {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ITEM (CARD DE PRODUTO) */
+.item {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin: 5px;
+}
+
+.item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.item > img {
+  width: 120px;
+  height: 120px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  object-fit: cover;
+  margin-right: 15px;
+  transition: transform 0.2s ease;
+}
+
+.item > img:hover {
+  transform: scale(1.05) rotate(3deg);
+}
+
+/* INFO DO ITEM */
+.item > .info {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.descricao {
+  font-size: 0.8rem;
+  color: #666666;
+  line-height: 1.3em;
+  margin: 5px 0;
+  max-height: 3.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* BOTTOM (PREÇO + BOTÃO) */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.preco {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgba(196, 12, 12, 0.842);
+}
+
+.btn-carrinho {
+  background-color: rgba(38, 122, 63, 0.842);
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-carrinho:hover {
+  background-color: #1d6a36;
+}
+
+.btn-carrinho i {
+  pointer-events: none;
+}
+
+/* FOOTER */
+footer {
+  color: white;
+  grid-area: 3 / 1 / 4 / -1;
+  background-color: rgba(196, 12, 12, 0.842);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cada slide será um "card horizontal" */
+.swiper-slide.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Imagem do lado esquerdo */
+.swiper-slide.item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+/* Texto ocupa o resto do espaço */
+.swiper-slide.item .info {
+  flex: 1;
+}
+
+/* Preço em destaque */
+.preco {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: rgba(196, 12, 12, 0.842);
+}
+.titulo-carrossel {
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin: 15px 10px;
+  color: rgba(196, 12, 12, 0.9);
+  text-align: left; /* ou center, se preferir */
+  border-left: 5px solid rgba(196, 12, 12, 0.9);
+  padding-left: 10px;
+}
+
+.titulo-secao {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 20px 0 10px;
+  color: #c62828;
+  text-align: center;
+  cursor: pointer;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(196, 12, 12);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  border-top: 1px solid #ddd;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-btn i {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.cart-count {
+  position: absolute;
+  top: 2px;
+  right: -5px;
+  background: red;
+  color: #fff;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
