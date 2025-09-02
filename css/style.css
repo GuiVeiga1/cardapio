@@ -9,15 +9,15 @@
   --cor-texto-padrao: #000;
   --cor-texto-claro: #fff;
   --cor-primaria: rgba(38, 122, 63, 0.842);
-  /* Cor principal da marca (ex: botões, cabeçalho) */
   --cor-secundaria: rgba(196, 12, 12, 0.842);
-  /* Cor de destaque (ex: preços, alertas) */
   --cor-cinza-claro: #ddd;
   --cor-cinza-medio: #999;
   --cor-cinza-escuro: #666;
   --cor-transicao: #e0e0e0;
   --cor-destaque: #ff6347;
-  /* Destaque para o preço novo */
+  --cor-estrela:rgb(231, 197, 5);
+
+
 
   /* Tipografia */
   --fonte-titulo: 'Poppins', Arial, sans-serif;
@@ -579,25 +579,27 @@ footer {
 
 .destaque {
   position: relative;
-  /* Essencial para posicionar a estrela */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
   transition: transform 0.3s ease;
+  overflow: visible; 
 }
 
 .destaque::before {
-  content: '\2B50';
-  /* O emoji de estrela. Você pode usar um ícone SVG se preferir */
+  content: "\f005";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color:var(--cor-estrela);
+  text-shadow: 
+    0 0 1px rgba(34, 34, 34, 0.5), 
+    0 0 1px rgba(34, 34, 34, 0.5), 
+    0 0 2px rgba(34, 34, 34, 0.5); 
   position: absolute;
-  top: -1px;
-  /* Ajuste a posição para o topo */
-  right: -13px;
-  /* Ajuste a posição para o canto direito */
-  font-size: 25px;
-  /* Tamanho da estrela */
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
   z-index: 10;
   animation: brilho 1.5s infinite alternate;
-  /* Adiciona uma animação para brilhar */
 }
 
 @keyframes brilho {
