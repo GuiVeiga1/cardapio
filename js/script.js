@@ -1,60 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializa o Swiper
   const swiper = new Swiper('.swiper', {
-    slidesPerView: 1,
+    slidesPerView: 'auto', 
     spaceBetween: 10,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
-    },
-    breakpoints: {
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 },
-    },
+    }, 
+    watchOverflow: true,
+    on: {
+      init: function () {
+        updateAlignment(this);
+      },
+      resize: function () {
+        updateAlignment(this);
+      }
+    }
+
   });
-const swiperMenu = new Swiper('.menu-carrossel-swiper', {
-  slidesPerView: 'auto',       
-  spaceBetween: 10,
-  freeMode: {
-    enabled: true,
-    momentum: false,
-  },
- pagination: {
-    el: '.imswiper-pagination2', 
-    clickable: true,
-  },
-  watchOverflow: true,
-  on: {
-    init: function () {
-      updateAlignment(this);
+
+  const swiperMenu = new Swiper('.menu-carrossel-swiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    freeMode: {
+      enabled: true,
+      momentum: false,
     },
-    resize: function () {
-      updateAlignment(this);
+    pagination: {
+      el: '.swiper-pagination-menu',
+      clickable: true,
+    },
+    watchOverflow: true,
+    on: {
+      init: function () {
+        updateAlignment(this);
+      },
+      resize: function () {
+        updateAlignment(this);
+      }
+    }
+  });
+
+  // Função para atualizar o alinhamento
+  function updateAlignment(swiper) {
+    const wrapper = swiper.wrapperEl;
+    const slidesWidth = Array.from(wrapper.children)
+      .reduce((sum, slide) => sum + slide.offsetWidth + swiper.params.spaceBetween, 0);
+
+    if (slidesWidth < swiper.width) {
+      // poucos slides → centraliza
+      wrapper.style.justifyContent = 'center';
+    } else {
+      // muitos slides → distribui normal
+      wrapper.style.justifyContent = 'flex-start';
     }
   }
-});
-
-// Função para atualizar o alinhamento
-function updateAlignment(swiper) {
-  const wrapper = swiper.wrapperEl;
-  const slidesWidth = Array.from(wrapper.children)
-    .reduce((sum, slide) => sum + slide.offsetWidth + swiper.params.spaceBetween, 0);
-
-  if (slidesWidth < swiper.width) {
-    // poucos slides → centraliza
-    wrapper.style.justifyContent = 'center';
-  } else {
-    // muitos slides → distribui normal
-    wrapper.style.justifyContent = 'flex-start';
-  }
-}
-
-
-
-
-
-
-
 
 
   // Lógica para nav links
@@ -86,7 +86,7 @@ function updateAlignment(swiper) {
     }
   });
 
-  // Adiciona um evento de clique para rolar para o topo
+
   backToTopButton.addEventListener('click', () => {
     window.scrollTo({
       top: 0,
@@ -97,7 +97,7 @@ function updateAlignment(swiper) {
   const precos = document.querySelectorAll(".preco-atual");
 
   precos.forEach(preco => {
-    // Pega o valor numérico (tirando R$, pontos e vírgulas)
+
     const valorFinal = parseFloat(
       preco.textContent.replace("R$", "").replace(".", "").replace(",", ".").trim()
     );
@@ -109,7 +109,7 @@ function updateAlignment(swiper) {
       valorAtual += 10;
 
       if (valorAtual >= valorFinal) {
-        valorAtual = valorFinal; // garante que não passe do valor final
+        valorAtual = valorFinal; 
         clearInterval(intervalo);
       }
 

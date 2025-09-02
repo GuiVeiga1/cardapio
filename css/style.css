@@ -1,5 +1,57 @@
 @charset "UTF-8";
 
+/* ==================================== */
+/* VARIÁVEIS CSS (:root)                */
+/* ==================================== */
+:root {
+  /* Cores */
+  --cor-fundo-principal: rgb(241, 236, 236);
+  --cor-texto-padrao: #000;
+  --cor-texto-claro: #fff;
+  --cor-primaria: rgba(38, 122, 63, 0.842);
+  /* Cor principal da marca (ex: botões, cabeçalho) */
+  --cor-secundaria: rgba(196, 12, 12, 0.842);
+  /* Cor de destaque (ex: preços, alertas) */
+  --cor-cinza-claro: #ddd;
+  --cor-cinza-medio: #999;
+  --cor-cinza-escuro: #666;
+  --cor-transicao: #e0e0e0;
+  --cor-destaque: #ff6347;
+  /* Destaque para o preço novo */
+
+  /* Tipografia */
+  --fonte-titulo: 'Poppins', Arial, sans-serif;
+  --fonte-texto: 'Roboto', Arial, sans-serif;
+  --tamanho-h1: 2rem;
+  --tamanho-h2: 1.5rem;
+  --tamanho-h3: 1.1em;
+  --tamanho-paragrafo: 1rem;
+  --tamanho-fonte-pequena: 0.9rem;
+  --tamanho-fonte-tiny: 0.85rem;
+
+  /* Espaçamentos e Medidas */
+  --espacamento-pequeno: 5px;
+  --espacamento-medio: 10px;
+  --espacamento-grande: 20px;
+  --altura-minima-main: 100vh;
+  --altura-header: 260px;
+  --altura-footer: 40px;
+  --largura-item-menu: 100px;
+  --largura-item-produto: 120px;
+
+  /* Sombras e Bordas */
+  --sombra-header: 0 4px 15px rgba(0, 0, 0, 0.3);
+  --sombra-item: 0 2px 6px rgba(0, 0, 0, 0.15);
+  --sombra-item-hover: 0 6px 12px rgba(0, 0, 0, 0.25);
+  --sombra-botao-topo: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --borda-arredondada: 10px;
+  --borda-arredondada-grande: 12px;
+}
+
+/* ==================================== */
+/* ESTILOS GERAIS                       */
+/* ==================================== */
+
 /* RESET BÁSICO */
 * {
   margin: 0;
@@ -9,9 +61,9 @@
 
 html,
 body {
-  background-color: rgb(241, 236, 236);
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: 1em;
+  background-color: var(--cor-fundo-principal);
+  font-family: var(--fonte-texto);
+  font-size: var(--tamanho-paragrafo);
   line-height: 1.5em;
   scroll-behavior: smooth;
 }
@@ -20,73 +72,69 @@ body {
 h1,
 h2,
 h3 {
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: var(--fonte-titulo);
   font-weight: 600;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: var(--tamanho-h1);
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: var(--tamanho-h2);
 }
 
 p {
-  font-size: 1rem;
+  font-size: var(--tamanho-paragrafo);
 }
 
-/* LAYOUT PRINCIPAL */
+/* ==================================== */
+/* LAYOUT PRINCIPAL                     */
+/* ==================================== */
 main {
-  min-height: 100vh;
-  /* ocupa no mínimo a tela inteira */
+  min-height: var(--altura-minima-main);
   width: 100%;
   display: grid;
-  grid-template: 260px 1fr 40px / 1fr 1fr;
+  grid-template: var(--altura-header) 1fr var(--altura-footer) / 1fr 1fr;
 }
 
 /* HEADER */
 header {
   grid-area: 1 / 1 / 2 / -1;
   background: url("../img/fundo.png") center/cover no-repeat;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--sombra-header);
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--cor-texto-claro);
   text-align: center;
-  padding: 20px;
+  padding: var(--espacamento-grande);
 }
 
 header p {
-  background-color: rgba(38, 122, 63, 0.842);
-  border-radius: 10px;
-  padding: 5px 10px;
-  margin: 5px 0;
-  font-size: 0.9rem;
+  background-color: var(--cor-primaria);
+  border-radius: var(--borda-arredondada);
+  padding: var(--espacamento-pequeno) var(--espacamento-medio);
+  margin: var(--espacamento-pequeno) 0;
+  font-size: var(--tamanho-fonte-pequena);
 }
 
-picture {
-  margin-top: 10px;
+header>.logo {
+  margin-top: var(--espacamento-medio);
   height: 100px;
   width: 100px;
   background: url("../img/loha.avif") center/cover no-repeat;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid var(--cor-texto-claro);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  background-color: #FFD27F;
-  /* fallback */
+
   transition: transform 0.3s ease;
 }
 
-picture:hover {
-  transform: rotate(5deg) scale(1.05);
-}
-
 header>h1 {
-  margin: 10px 0 5px 0;
-  font-size: 2rem;
+  margin: var(--espacamento-medio) 0 var(--espacamento-pequeno) 0;
+  font-size: var(--tamanho-h1);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
@@ -103,181 +151,147 @@ section {
 
 section>h2 {
   text-align: center;
-  margin: 10px;
-  padding: 5px;
+  margin: var(--espacamento-medio);
+  padding: var(--espacamento-pequeno);
 }
 
-
+/* MENU CARROSSEL */
 .menu-carrossel-swiper {
-  margin: 20px auto;
-  padding-left: 0;
+  margin: var(--espacamento-grande) auto;
   width: 100%;
- 
-  justify-content: center;
+  box-sizing: border-box;
   overflow: hidden;
-
-  padding: 0 10px
-
+  padding: 0 var(--espacamento-medio);
 }
 
+.menu-carrossel-swiper .swiper-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--espacamento-medio);
+}
 
-/* Cada slide ocupa apenas o necessário */
 .menu-carrossel-swiper .swiper-slide {
   display: flex;
   align-items: center;
-  width: 100px;
-  /* menor que antes (era 120px) */
+  width: var(--largura-item-menu);
   flex-shrink: 0;
 }
 
 /* Estilo para cada item do menu */
+
 .menu-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #000;
-  border-radius: 12px;
-  /* ligeiramente menor */
-  border: 1px solid #ddd;
+  color: var(--cor-texto-padrao);
+  border-radius: var(--borda-arredondada-grande);
+  border: 1px solid var(--cor-cinza-claro);
   padding: 8px 4px;
-  /* menor que antes */
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
-  background-color: white;
+  background-color: var(--cor-texto-claro);
 }
 
-/* Estilo para a imagem/ícone */
 .menu-item .fa-solid {
   width: 50px;
-  /* menor que antes (era 60px) */
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  /* menor que antes (2.5rem) */
   margin-bottom: 4px;
-  color: #666;
+  color: var(--cor-cinza-escuro);
 }
 
-/* Estilo para o texto */
 .menu-item span {
-  font-size: 0.85rem;
-  /* um pouco menor */
-  color: #666666;
+  font-size: var(--tamanho-fonte-tiny);
+  color: var(--cor-cinza-escuro);
   line-height: 1.2em;
   margin: 4px 0;
   max-height: 3.6em;
-  /* proporcionalmente menor */
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
 }
 
-/* Estilo para hover (opcional) */
 .menu-item:not(.active):hover {
-  background-color: #e0e0e0;
+  background-color: var(--cor-transicao);
   transform: translateY(-1px);
 }
 
-
-/* CONTAINER DE ITENS */
-.container {
-  grid-template-columns: 100%;
-  gap: 10px;
+.carossel-swiper {
+  margin: 10px !important;
+  display: flex;
   justify-content: center;
-  align-content: center;
-  padding: 10px;
+  align-items: center;
+  gap: var(--espacamento-medio);
+
 }
 
+.carossel-swiper-container {
+  display: flex;
+  align-items: center;
+  width: var(--largura-item-menu);
+  flex-shrink: 0;
+
+
+}
+
+
+/* ==================================== */
+/* CONTAINER DE ITENS                   */
+/* ==================================== */
 .container {
+  grid-template-columns: 100%;
+  gap: var(--espacamento-medio);
+  justify-content: center;
+  align-content: center;
+  padding: var(--espacamento-medio);
   display: grid;
 }
 
-/* Título dentro do container */
 .container h2.titulo-secao {
   grid-column: 1 / -1;
-  /* ocupa todas as colunas do grid */
   text-align: center;
-
 }
 
-/* RESPONSIVIDADE */
-@media (min-width: 600px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-.menu-carrossel-swiper {
-   margin: 20px auto;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden; 
-  padding: 0 10px; /* Adiciona uma margem de 10px nas laterais */
-}
-.menu-carrossel-swiper .swiper-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+.swiper-slide {
+  max-width: 350px;
 }
 
-
-}
-
-@media (min-width: 900px) {
-  .container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-
-  .menu-carrossel-swiper {
-    margin: 20px auto;
-    padding-left: 0;
-    justify-content: center;
-
-    width: 100%;
-    /* ocupa toda a tela */
-    box-sizing: border-box;
-    overflow: hidden;
-    /* previne rolagem extra */
-  }
-
-  .menu-carrossel-swiper .swiper-wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    /* margem interna segura */
-    box-sizing: border-box;
-  }
-
-
-
-}
-
-/* ITEM (CARD DE PRODUTO) */
 .item {
+  padding: var(--espacamento-pequeno);
+}
+
+/* ==================================== */
+/* ITEM (CARD PRODUTO)                  */
+/* ==================================== */
+.item {
+  margin: 10px;
   display: flex;
   flex-direction: row;
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background: var(--cor-texto-claro);
+  border-radius: var(--borda-arredondada);
+  padding: var(--espacamento-medio);
+  box-shadow: var(--sombra-item);
   align-items: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin: 5px;
+  margin: var(--espacamento-pequeno);
 }
+
+
 
 .item:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--sombra-item-hover);
 }
 
 .item>img {
-  width: 120px;
-  height: 120px;
+  width: var(--largura-item-produto);
+  height: var(--largura-item-produto);
   border-top-left-radius: 15px;
   border-bottom-right-radius: 15px;
   object-fit: cover;
@@ -289,17 +303,16 @@ section>h2 {
   transform: scale(1.05) rotate(3deg);
 }
 
-/* INFO DO ITEM */
 .item>.info {
   flex: 1;
-  font-size: 1rem;
+  font-size: var(--tamanho-paragrafo);
 }
 
 .descricao {
   font-size: 0.8rem;
-  color: #666666;
+  color: var(--cor-cinza-escuro);
   line-height: 1.3em;
-  margin: 5px 0;
+  margin: var(--espacamento-pequeno) 0;
   max-height: 3.9em;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -310,42 +323,38 @@ section>h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
+  margin-top: var(--espacamento-medio);
 }
 
-.preco {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: rgba(196, 12, 12, 0.842);
+/* Estilos base (para celular) */
+.precos {
+  display: flex;
+  flex-direction: column; /* Preços um embaixo do outro por padrão */
+  align-items: flex-start;
 }
 
-/* Estilo para o preço antigo */
 .preco-antigo {
-  color: #999;
-  /* Cor cinza para o preço riscado */
-  font-size: 0.9em;
-  /* Deixa o texto um pouco menor */
-  margin-right: 8px;
-  /* Adiciona um espaço entre o preço antigo e o novo */
+  color: var(--cor-cinza-medio);
+  font-size: var(--tamanho-fonte-pequena);
+ 
 }
 
-/* Estilo para o preço atual em promoção */
 .preco-atual {
-  color: #c40c0c;
+  color: var(--cor-secundaria);
   font-weight: bold;
   font-size: 1.2em;
-  margin-right: 40px;
-  /* Adiciona 8 pixels de espaço à esquerda */
+
 }
 
+
 .btn-carrinho {
-  background-color: rgba(38, 122, 63, 0.842);
+  background-color: var(--cor-primaria);
   border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+  color: var(--cor-texto-claro);
+  padding: var(--espacamento-pequeno) var(--espacamento-medio);
+  border-radius: var(--espacamento-pequeno);
   cursor: pointer;
-  font-size: 1rem;
+  font-size: var(--tamanho-paragrafo);
   transition: background-color 0.2s ease;
 }
 
@@ -359,30 +368,34 @@ section>h2 {
 
 /* FOOTER */
 footer {
-  color: white;
+  color: var(--cor-texto-claro);
   grid-area: 3 / 1 / 4 / -1;
-  background-color: rgba(196, 12, 12, 0.842);
+  background-color: var(--cor-secundaria);
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+/* ==================================== */
+/* NAVEGAÇÃO, PAGINAÇÃO, ETC            */
+/* ==================================== */
 
 /* Cada slide será um "card horizontal" */
 .swiper-slide.item {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  background: var(--cor-texto-claro);
+  border-radius: var(--borda-arredondada);
+  padding: var(--espacamento-medio);
+  box-shadow: var(--sombra-item);
 }
 
 /* Imagem do lado esquerdo */
 .swiper-slide.item img {
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
+  width: var(--largura-item-produto);
+  height: var(--largura-item-produto);
+  border-radius: var(--borda-arredondada);
   object-fit: cover;
   margin-right: 15px;
 }
@@ -396,26 +409,25 @@ footer {
 .preco {
   font-weight: bold;
   font-size: 1.1rem;
-  color: rgba(196, 12, 12, 0.842);
+  color: var(--cor-secundaria);
 }
 
 .titulo-carrossel {
-  font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-size: var(--tamanho-h2);
+  font-family: var(--fonte-titulo);
   font-weight: 600;
-  margin: 15px 10px;
+  margin: 15px var(--espacamento-medio);
   color: rgba(196, 12, 12, 0.9);
   text-align: left;
-  /* ou center, se preferir */
   border-left: 5px solid rgba(196, 12, 12, 0.9);
-  padding-left: 10px;
+  padding-left: var(--espacamento-medio);
 }
 
 .titulo-secao {
   font-size: 1.6rem;
   font-weight: bold;
-  margin: 20px 0 10px;
-  color: #c62828;
+  margin: var(--espacamento-grande) 0 var(--espacamento-medio);
+  color: var(--cor-secundaria);
   text-align: center;
   cursor: pointer;
 }
@@ -426,13 +438,13 @@ footer {
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: rgb(241, 236, 236);
+  background-color: var(--cor-fundo-principal);
   display: flex;
   justify-content: space-around;
   align-items: center;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--cor-cinza-claro);
 }
 
 .nav-btn {
@@ -457,7 +469,7 @@ footer {
   top: 2px;
   right: -5px;
   background: red;
-  color: #fff;
+  color: var(--cor-texto-claro);
   font-size: 12px;
   width: 18px;
   height: 18px;
@@ -469,23 +481,22 @@ footer {
 
 /* Container da paginação */
 .swiper .swiper-pagination,
-.imswiper-pagination2 {
+.swiper-pagination-menu {
   position: relative;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: var(--espacamento-grande);
+  margin-bottom: var(--espacamento-medio);
   display: flex;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  /* permite quebrar para a próxima linha */
 }
 
 /* Bullets padrão */
 .swiper .swiper-pagination-bullet,
-.imswiper-pagination2 .swiper-pagination-bullet {
+.swiper-pagination-menu .swiper-pagination-bullet {
   flex: 0 0 40px;
   height: 4px;
-  background: #e0e0e0;
+  background: var(--cor-transicao);
   border-radius: 4px;
   opacity: 1;
   transition: background 0.3s;
@@ -493,42 +504,30 @@ footer {
 
 /* Bullet ativo */
 .swiper .swiper-pagination-bullet-active,
-.imswiper-pagination2 .swiper-pagination-bullet-active {
-  background: #000;
+.swiper-pagination-menu .swiper-pagination-bullet-active {
+  background: var(--cor-texto-padrao);
 }
-
-
 
 /* Botão para voltar ao topo */
 .back-to-top {
   position: fixed;
-  /* Fixa o botão na tela */
   bottom: 110px;
-  /* Distância da parte inferior */
-  right: 20px;
-  /* Distância da lateral direita */
-  background-color: rgba(196, 12, 12, 0.9);
-  /* Cor de fundo vermelha com transparência */
-  color: white;
+  right: var(--espacamento-grande);
+  background-color: var(--cor-secundaria);
+  color: var(--cor-texto-claro);
   border: none;
   border-radius: 50%;
-  /* Deixa o botão redondo */
   width: 50px;
   height: 50px;
   font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--sombra-botao-topo);
   z-index: 999;
-  /* Garante que o botão fique na frente de outros elementos */
   transition: opacity 0.3s, visibility 0.3s;
-  /* Transição suave */
-
-  /* Centraliza o ícone dentro do botão */
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 /* Estado padrão: botão invisível */
 .back-to-top.hidden {
@@ -544,21 +543,121 @@ footer {
 
 .secao-separador {
   background-color: #f0f0f0;
-  /* Cor de fundo para o separador */
-  padding: 10px 20px;
+  padding: var(--espacamento-medio) var(--espacamento-grande);
   text-align: center;
-  margin-top: 10px;
+  margin-top: var(--espacamento-medio);
 }
 
 .secao-separador h3 {
-  font-size: 1.1em;
+  font-size: var(--tamanho-h3);
   text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--fonte-titulo);
   font-weight: 600;
-  margin: 15px 10px;
-  color: rgba(196, 12, 12, 0.9);
+  margin: 15px var(--espacamento-medio);
+  color: var(--cor-secundaria);
   text-align: left;
-  border-left: 5px solid rgba(196, 12, 12, 0.9);
-  padding-left: 10px;
+  border-left: 5px solid var(--cor-secundaria);
+  padding-left: var(--espacamento-medio);
 }
 
+.promocao-destaque {
+  border: 2px solid var(--cor-destaque);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.promocao-destaque .preco-antigo {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.promocao-destaque .preco-atual {
+  color: var(--cor-destaque);
+  font-weight: bold;
+}
+
+.destaque {
+  position: relative;
+  /* Essencial para posicionar a estrela */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.destaque::before {
+  content: '\2B50';
+  /* O emoji de estrela. Você pode usar um ícone SVG se preferir */
+  position: absolute;
+  top: -1px;
+  /* Ajuste a posição para o topo */
+  right: -13px;
+  /* Ajuste a posição para o canto direito */
+  font-size: 25px;
+  /* Tamanho da estrela */
+  z-index: 10;
+  animation: brilho 1.5s infinite alternate;
+  /* Adiciona uma animação para brilhar */
+}
+
+@keyframes brilho {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* ==================================== */
+/* RESPONSIVIDADE                       */
+/* ==================================== */
+@media (min-width: 600px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu-carrossel-swiper .swiper-wrapper {
+    justify-content: center;
+  }
+  .precos {
+    flex-direction: row; 
+    align-items: center;
+  }
+
+  .preco-antigo {
+    margin-right: 8px;
+  }
+
+  .preco-atual {
+    margin-right: 40px; 
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .menu-carrossel-swiper {
+    padding: 0 var(--espacamento-grande);
+  }
+
+  .menu-carrossel-swiper .swiper-wrapper {
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .swiper-slide {
+    max-width: 500px;
+
+  }
+
+  .item {
+    padding: var(--espacamento-pequeno);
+  }
+
+}
