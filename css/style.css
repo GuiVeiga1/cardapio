@@ -13,6 +13,7 @@ body {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 1em;
   line-height: 1.5em;
+  scroll-behavior: smooth;
 }
 
 /* TÍTULOS */
@@ -94,6 +95,7 @@ aside {
 
 /* SECTION */
 section {
+  margin-bottom: 30px;
   grid-area: 2 / 1 / 3 / -1;
 }
 
@@ -103,34 +105,61 @@ section > h2 {
   padding: 5px;
 }
 
-/* NAV */
-section > nav > ul {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 15px;
+/* Contêiner principal para os itens do menu */
+.menu-container {
+ 
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 10px; /* Espaço entre os itens */
+    max-width: 600px; /* Limita a largura em telas maiores */
+    margin: 20px auto; /* Centraliza o contêiner na página */
 }
 
-section > nav > ul > li {
-  display: flex;
+/* Estilo para cada item do menu */
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 15px 10px;
+    height: 100px;
+    width: 90px; /* Largura fixa para cada item */
+    box-sizing: border-box;
+    justify-content: space-between;
+    transition: all 0.2s ease-in-out;
 }
 
-section > nav > ul > li > a {
-  text-decoration: none;
-  color: black;
-  font-family: 'Poppins', Arial, sans-serif;
-  font-weight: 600;
+/* Estilo para a imagem */
+.menu-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
 }
 
-nav ul li a.active {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-color: red;
-  text-decoration-thickness: 3px;
+/* Estilo para o texto */
+.menu-item span {
+    font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.3em;
+  margin: 5px 0;
+  max-height: 3.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+
+/* Estilo para hover (opcional) */
+.menu-item:not(.active):hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px);
+}
 /* CONTAINER DE ITENS */
 .container {
-  display: none; /* escondido por padrão */
   grid-template-columns: 100%;
   gap: 10px;
   justify-content: center;
@@ -138,7 +167,7 @@ nav ul li a.active {
   padding: 10px;
 }
 
-.container.active {
+.container {
   display: grid;
 }
 /* Título dentro do container */
@@ -148,20 +177,18 @@ nav ul li a.active {
 
 }
 
-
-
-
 /* RESPONSIVIDADE */
 @media (min-width: 600px) {
-  .container.active {
+  .container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 900px) {
-  .container.active {
+  .container {
     grid-template-columns: repeat(3, 1fr);
   }
+
 }
 
 /* ITEM (CARD DE PRODUTO) */
@@ -225,6 +252,20 @@ nav ul li a.active {
   font-size: 1.1rem;
   color: rgba(196, 12, 12, 0.842);
 }
+/* Estilo para o preço antigo */
+.preco-antigo {
+    color: #999; /* Cor cinza para o preço riscado */
+    font-size: 0.9em; /* Deixa o texto um pouco menor */
+    margin-right: 8px; /* Adiciona um espaço entre o preço antigo e o novo */
+}
+
+/* Estilo para o preço atual em promoção */
+.preco-atual {
+    color: #c40c0c;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 40px; /* Adiciona 8 pixels de espaço à esquerda */
+}
 
 .btn-carrinho {
   background-color: rgba(38, 122, 63, 0.842);
@@ -286,6 +327,7 @@ footer {
   font-size: 1.1rem;
   color: rgba(196, 12, 12, 0.842);
 }
+
 .titulo-carrossel {
   font-size: 1.5rem;
   font-family: 'Poppins', sans-serif;
@@ -312,7 +354,7 @@ footer {
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: rgb(196, 12, 12);
+ background-color: rgb(241, 236, 236);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -353,6 +395,77 @@ footer {
   align-items: center;
 }
 
+.swiper .swiper-pagination {
+  position: relative;   
+  margin-top: 20px;   
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;         
+}
+
+.swiper .swiper-pagination-bullet {
+  flex: 0 0 40px;       
+  height: 4px;          
+  background: #e0e0e0;  
+  border-radius: 4px; 
+  opacity: 1;
+  transition: background 0.3s;
+}
+.swiper .swiper-pagination-bullet-active {
+  background: #000;     
+}
+/* Botão para voltar ao topo */
+.back-to-top {
+    position: fixed; /* Fixa o botão na tela */
+    bottom: 110px; /* Distância da parte inferior */
+    right: 20px; /* Distância da lateral direita */
+    background-color: rgba(196, 12, 12, 0.9); /* Cor de fundo vermelha com transparência */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Deixa o botão redondo */
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Garante que o botão fique na frente de outros elementos */
+    transition: opacity 0.3s, visibility 0.3s; /* Transição suave */
+    
+    /* Centraliza o ícone dentro do botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
+/* Estado padrão: botão invisível */
+.back-to-top.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
 
+/* Estado visível */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.secao-separador {
+    background-color: #f0f0f0; /* Cor de fundo para o separador */
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.secao-separador h3 {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin: 15px 10px;
+  color: rgba(196, 12, 12, 0.9);
+  text-align: left;
+  border-left: 5px solid rgba(196, 12, 12, 0.9);
+  padding-left: 10px;
+}

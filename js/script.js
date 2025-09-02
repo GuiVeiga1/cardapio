@@ -31,6 +31,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+   const backToTopButton = document.getElementById('back-to-top');
+
+    // Adiciona um evento de rolagem na janela
+    window.addEventListener('scroll', () => {
+        // Se a rolagem for maior que 200px, mostra o botão
+        if (window.scrollY > 200) {
+            backToTopButton.classList.add('show');
+            backToTopButton.classList.remove('hidden');
+        } else {
+            // Caso contrário, esconde o botão
+            backToTopButton.classList.remove('show');
+            backToTopButton.classList.add('hidden');
+        }
+    });
+
+    // Adiciona um evento de clique para rolar para o topo
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' /* Rolagem suave */
+        });
+    });
+
 
 
 

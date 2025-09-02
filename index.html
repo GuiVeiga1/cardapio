@@ -26,18 +26,30 @@
             </div>
         </header>
         <section>
-            <nav>
-                <ul>
-                    <li><a href="#" class="active">Hambúrguer</a></li>
-                    <li><a href="#">Bebidas</a></li>
-                    <li><a href="#">Sobremesas</a></li>
-                </ul>
-            </nav>
-            <div class="carrossel">
+
+            <div class="menu-container">
+                <a href="#hamburguer" class="menu-item ">
+                    <i class="fa-solid fa-burger fa-xl"></i>
+                    <span>Hambúrguer</span>
+                </a>
+
+                <a href="#bebidas" class="menu-item">
+                    <i class="fa-solid fa-martini-glass-citrus fa-xl"></i>
+                    <span>Bebidas</span>
+                </a>
+
+
+                <a href="#Sobremesas" class="menu-item">
+                    <i class="fa-solid fa-cake-candles fa-xl"></i>
+                    <span>Sobremesas</span>
+                </a>
+
+            </div>
+
+            <div id="promocao" class="carrossel">
                 <h2 class="titulo-carrossel">Promoções</h2>
                 <div class="swiper">
                     <div class="swiper-wrapper">
-
                         <div class="swiper-slide item">
                             <img src="img/pexels-eduardo-krajan-424982200-15476360.jpg" alt="Produto 1">
                             <div class="info">
@@ -45,7 +57,12 @@
                                 <p class="descricao">Pão macio, hambúrguer artesanal, queijo cheddar, alface e molho da
                                     casa.</p>
                                 <div class="bottom">
-                                    <span class="preco">R$ 99,90</span>
+                                    <div class="precos">
+                                        <span class="preco-antigo">
+                                            <del>R$ 120,00</del>
+                                        </span>
+                                        <span class="preco-atual">R$ 99,90</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +73,12 @@
                                 <h3>X-Burger Bacon</h3>
                                 <p class="descricao">Hambúrguer artesanal com bacon crocante e molho da casa.</p>
                                 <div class="bottom">
-                                    <span class="preco">R$ 89,90</span>
+                                    <div class="precos">
+                                        <span class="preco-antigo">
+                                            <del>R$ 120,00</del>
+                                        </span>
+                                        <span class="preco-atual">R$ 99,90</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +88,12 @@
                                 <h3>X-Burger Bacon</h3>
                                 <p class="descricao">Hambúrguer artesanal com bacon crocante e molho da casa.</p>
                                 <div class="bottom">
-                                    <span class="preco">R$ 89,90</span>
+                                    <div class="precos">
+                                        <span class="preco-antigo">
+                                            <del>R$ 120,00</del>
+                                        </span>
+                                        <span class="preco-atual">R$ 99,90</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +103,12 @@
                                 <h3>X-Burger Bacon</h3>
                                 <p class="descricao">Hambúrguer artesanal com bacon crocante e molho da casa.</p>
                                 <div class="bottom">
-                                    <span class="preco">R$ 89,90</span>
+                                    <div class="precos">
+                                        <span class="preco-antigo">
+                                            <del>R$ 120,00</del>
+                                        </span>
+                                        <span class="preco-atual">R$ 99,90</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +118,12 @@
                                 <h3>X-Burger Bacon</h3>
                                 <p class="descricao">Hambúrguer artesanal com bacon crocante e molho da casa.</p>
                                 <div class="bottom">
-                                    <span class="preco">R$ 89,90</span>
+                                    <div class="precos">
+                                        <span class="preco-antigo">
+                                            <del>R$ 120,00</del>
+                                        </span>
+                                        <span class="preco-atual">R$ 99,90</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +133,12 @@
                                 <h3>X-Burger Bacon</h3>
                                 <p class="descricao">Hambúrguer artesanal com bacon crocante e molho da casa.</p>
                                 <div class="bottom">
-                                    <span class="preco">R$ 89,90</span>
+                                    <div class="precos">
+                                        <span class="preco-antigo">
+                                            <del>R$ 120,00</del>
+                                        </span>
+                                        <span class="preco-atual">R$ 99,90</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +148,12 @@
                                 <h3>X-Burger Bacon</h3>
                                 <p class="descricao">Hambúrguer artesanal com bacon crocante e molho da casa.</p>
                                 <div class="bottom">
-                                    <span class="preco">R$ 89,90</span>
+                                    <div class="precos">
+                                        <span class="preco-antigo">
+                                            <del>R$ 120,00</del>
+                                        </span>
+                                        <span class="preco-atual">R$ 99,90</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,10 +167,14 @@
                 </div> <!-- fecha swiper -->
             </div> <!-- fecha carrossel -->
 
-
+            <div class="titulo-carrossel">
+                <h3>Hambúrguer</h3>
+            </div>
 
             <div class="container active" id="hamburguer">
-                <h2 class="titulo-secao ">Hambúrguer</h2>
+                <!-- 
+                    <h2 class="titulo-secao ">Hambúrguer</h2>
+                -->
                 <div class="item">
                     <img src="img/pexels-eduardo-krajan-424982200-15476360.jpg" alt="Produto 1">
                     <div class="info">
@@ -321,9 +372,13 @@
                     </div>
                 </div>
             </div>
-
+            <div class="secao-separador">
+                <h3>Bebidas</h3>
+            </div>
             <div class="container" id="bebidas">
-                <h2 class="titulo-secao ">Bebidas</h2>
+                <!-- 
+                    <h2 class="titulo-secao ">Bebidas</h2>
+                -->
                 <div class="item">
                     <img src="img/coca-zero.webp" alt="Coca-Cola Zero Lata 350ml">
                     <div class="info">
@@ -366,9 +421,13 @@
                     </div>
                 </div>
             </div>
-
+            <div class="secao-separador">
+                <h3>Sobremesas</h3>
+            </div>
             <div class="container" id="Sobremesas">
+                <!-- 
                 <h2 class="titulo-secao">Sobremesas</h2>
+            -->
                 <div class="item">
                     <img src="img/brigadeiro.jpg" alt="Brigadeiro gourmet">
                     <div class="info">
@@ -433,8 +492,10 @@
                 <span>Histórico</span>
             </button>
         </nav>
+        <button id="back-to-top" class="back-to-top hidden">
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
 
-      
     </main>
 
     <script src="js/swiper/swiper.js"></script>
