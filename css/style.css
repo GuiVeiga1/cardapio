@@ -38,7 +38,8 @@ p {
 
 /* LAYOUT PRINCIPAL */
 main {
-  min-height: 100vh; /* ocupa no mínimo a tela inteira */
+  min-height: 100vh;
+  /* ocupa no mínimo a tela inteira */
   width: 100%;
   display: grid;
   grid-template: 260px 1fr 40px / 1fr 1fr;
@@ -74,7 +75,8 @@ picture {
   border-radius: 50%;
   border: 2px solid white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  background-color: #FFD27F; /* fallback */
+  background-color: #FFD27F;
+  /* fallback */
   transition: transform 0.3s ease;
 }
 
@@ -82,7 +84,7 @@ picture:hover {
   transform: rotate(5deg) scale(1.05);
 }
 
-header > h1 {
+header>h1 {
   margin: 10px 0 5px 0;
   font-size: 2rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
@@ -99,65 +101,85 @@ section {
   grid-area: 2 / 1 / 3 / -1;
 }
 
-section > h2 {
+section>h2 {
   text-align: center;
   margin: 10px;
   padding: 5px;
 }
 
-/* Contêiner principal para os itens do menu */
-.menu-container {
- 
-    display: flex;
-    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
-    justify-content: center; /* Centraliza os itens horizontalmente */
-    gap: 10px; /* Espaço entre os itens */
-    max-width: 600px; /* Limita a largura em telas maiores */
-    margin: 20px auto; /* Centraliza o contêiner na página */
+
+.menu-carrossel-swiper {
+  margin: 20px auto;
+  padding-left: 0;
+  /* evita deslocar */
+  justify-content: center;
+  /* centraliza os itens */
+
+}
+
+
+/* Cada slide ocupa apenas o necessário */
+.menu-carrossel-swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  /* menor que antes (era 120px) */
+  flex-shrink: 0;
 }
 
 /* Estilo para cada item do menu */
 .menu-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: #000;
-    background-color: #f0f0f0;
-    border-radius: 15px;
-    padding: 15px 10px;
-    height: 100px;
-    width: 90px; /* Largura fixa para cada item */
-    box-sizing: border-box;
-    justify-content: space-between;
-    transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #000;
+  border-radius: 12px;
+  /* ligeiramente menor */
+  border: 1px solid #ddd;
+  padding: 8px 4px;
+  /* menor que antes */
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
 }
 
-/* Estilo para a imagem */
-.menu-item img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    margin-bottom: 5px;
+/* Estilo para a imagem/ícone */
+.menu-item .fa-solid {
+  width: 50px;
+  /* menor que antes (era 60px) */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  /* menor que antes (2.5rem) */
+  margin-bottom: 4px;
+  color: #666;
 }
 
 /* Estilo para o texto */
 .menu-item span {
-    font-size: 0.9rem;
+  font-size: 0.85rem;
+  /* um pouco menor */
   color: #666666;
-  line-height: 1.3em;
-  margin: 5px 0;
-  max-height: 3.9em;
+  line-height: 1.2em;
+  margin: 4px 0;
+  max-height: 3.6em;
+  /* proporcionalmente menor */
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
 }
-
 
 /* Estilo para hover (opcional) */
 .menu-item:not(.active):hover {
-    background-color: #e0e0e0;
-    transform: translateY(-1px);
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
 }
+
+
 /* CONTAINER DE ITENS */
 .container {
   grid-template-columns: 100%;
@@ -170,9 +192,11 @@ section > h2 {
 .container {
   display: grid;
 }
+
 /* Título dentro do container */
 .container h2.titulo-secao {
-  grid-column: 1 / -1; /* ocupa todas as colunas do grid */
+  grid-column: 1 / -1;
+  /* ocupa todas as colunas do grid */
   text-align: center;
 
 }
@@ -182,12 +206,53 @@ section > h2 {
   .container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+.menu-carrossel-swiper {
+  margin: 20px auto;
+  padding-left: 0;
+  justify-content: center;
+ 
+  width: 100%; /* ocupa toda a tela */
+  box-sizing: border-box;
+  overflow: hidden; /* previne rolagem extra */
+}
+.menu-carrossel-swiper .swiper-wrapper {
+  display: flex;
+  justify-content: center; 
+  padding: 0 20px; /* margem interna segura */
+  box-sizing: border-box;
+}
+
+
 }
 
 @media (min-width: 900px) {
   .container {
     grid-template-columns: repeat(3, 1fr);
   }
+
+
+  .menu-carrossel-swiper {
+    margin: 20px auto;
+    padding-left: 0;
+    justify-content: center;
+
+    width: 100%;
+    /* ocupa toda a tela */
+    box-sizing: border-box;
+    overflow: hidden;
+    /* previne rolagem extra */
+  }
+
+  .menu-carrossel-swiper .swiper-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    /* margem interna segura */
+    box-sizing: border-box;
+  }
+
+
 
 }
 
@@ -209,7 +274,7 @@ section > h2 {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
-.item > img {
+.item>img {
   width: 120px;
   height: 120px;
   border-top-left-radius: 15px;
@@ -219,12 +284,12 @@ section > h2 {
   transition: transform 0.2s ease;
 }
 
-.item > img:hover {
+.item>img:hover {
   transform: scale(1.05) rotate(3deg);
 }
 
 /* INFO DO ITEM */
-.item > .info {
+.item>.info {
   flex: 1;
   font-size: 1rem;
 }
@@ -252,19 +317,24 @@ section > h2 {
   font-size: 1.1rem;
   color: rgba(196, 12, 12, 0.842);
 }
+
 /* Estilo para o preço antigo */
 .preco-antigo {
-    color: #999; /* Cor cinza para o preço riscado */
-    font-size: 0.9em; /* Deixa o texto um pouco menor */
-    margin-right: 8px; /* Adiciona um espaço entre o preço antigo e o novo */
+  color: #999;
+  /* Cor cinza para o preço riscado */
+  font-size: 0.9em;
+  /* Deixa o texto um pouco menor */
+  margin-right: 8px;
+  /* Adiciona um espaço entre o preço antigo e o novo */
 }
 
 /* Estilo para o preço atual em promoção */
 .preco-atual {
-    color: #c40c0c;
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-right: 40px; /* Adiciona 8 pixels de espaço à esquerda */
+  color: #c40c0c;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-right: 40px;
+  /* Adiciona 8 pixels de espaço à esquerda */
 }
 
 .btn-carrinho {
@@ -304,7 +374,7 @@ footer {
   background: white;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* Imagem do lado esquerdo */
@@ -334,7 +404,8 @@ footer {
   font-weight: 600;
   margin: 15px 10px;
   color: rgba(196, 12, 12, 0.9);
-  text-align: left; /* ou center, se preferir */
+  text-align: left;
+  /* ou center, se preferir */
   border-left: 5px solid rgba(196, 12, 12, 0.9);
   padding-left: 10px;
 }
@@ -354,11 +425,11 @@ footer {
   left: 0;
   width: 100%;
   height: 60px;
- background-color: rgb(241, 236, 236);
+  background-color: rgb(241, 236, 236);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   border-top: 1px solid #ddd;
 }
@@ -395,67 +466,87 @@ footer {
   align-items: center;
 }
 
-.swiper .swiper-pagination {
-  position: relative;   
-  margin-top: 20px;   
-  margin-bottom: 50px;
+/* Container da paginação */
+.swiper .swiper-pagination,
+.imswiper-pagination2 {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
-  gap: 8px;         
+  gap: 8px;
+  flex-wrap: wrap;
+  /* permite quebrar para a próxima linha */
 }
 
-.swiper .swiper-pagination-bullet {
-  flex: 0 0 40px;       
-  height: 4px;          
-  background: #e0e0e0;  
-  border-radius: 4px; 
+/* Bullets padrão */
+.swiper .swiper-pagination-bullet,
+.imswiper-pagination2 .swiper-pagination-bullet {
+  flex: 0 0 40px;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 4px;
   opacity: 1;
   transition: background 0.3s;
 }
-.swiper .swiper-pagination-bullet-active {
-  background: #000;     
+
+/* Bullet ativo */
+.swiper .swiper-pagination-bullet-active,
+.imswiper-pagination2 .swiper-pagination-bullet-active {
+  background: #000;
 }
+
+
+
 /* Botão para voltar ao topo */
 .back-to-top {
-    position: fixed; /* Fixa o botão na tela */
-    bottom: 110px; /* Distância da parte inferior */
-    right: 20px; /* Distância da lateral direita */
-    background-color: rgba(196, 12, 12, 0.9); /* Cor de fundo vermelha com transparência */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Deixa o botão redondo */
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 999; /* Garante que o botão fique na frente de outros elementos */
-    transition: opacity 0.3s, visibility 0.3s; /* Transição suave */
-    
-    /* Centraliza o ícone dentro do botão */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  /* Fixa o botão na tela */
+  bottom: 110px;
+  /* Distância da parte inferior */
+  right: 20px;
+  /* Distância da lateral direita */
+  background-color: rgba(196, 12, 12, 0.9);
+  /* Cor de fundo vermelha com transparência */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  /* Deixa o botão redondo */
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  /* Garante que o botão fique na frente de outros elementos */
+  transition: opacity 0.3s, visibility 0.3s;
+  /* Transição suave */
+
+  /* Centraliza o ícone dentro do botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
 /* Estado padrão: botão invisível */
 .back-to-top.hidden {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* Estado visível */
 .back-to-top.show {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 .secao-separador {
-    background-color: #f0f0f0; /* Cor de fundo para o separador */
-    padding: 10px 20px;
-    text-align: center;
-    margin-top: 40px;
+  background-color: #f0f0f0;
+  /* Cor de fundo para o separador */
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .secao-separador h3 {
