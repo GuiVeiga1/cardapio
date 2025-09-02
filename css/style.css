@@ -211,19 +211,17 @@ section>h2 {
   }
 
 .menu-carrossel-swiper {
-  margin: 20px auto;
-  padding-left: 0;
-  justify-content: center;
- 
-  width: 100%; /* ocupa toda a tela */
+   margin: 20px auto;
+  width: 100%;
   box-sizing: border-box;
-  overflow: hidden; /* previne rolagem extra */
+  overflow: hidden; 
+  padding: 0 10px; /* Adiciona uma margem de 10px nas laterais */
 }
 .menu-carrossel-swiper .swiper-wrapper {
   display: flex;
-  justify-content: center; 
-  padding: 0 20px; /* margem interna segura */
-  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 
